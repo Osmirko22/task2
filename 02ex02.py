@@ -8,7 +8,7 @@ MENU = ['spam', 'egg', 'sausage', 'bacon']  # that's all combinations
 MENU_MULTI = MENU + ['eggs', 'sausages']    # including plurals
 JOINTS = [', and ', ', ', ' and ', ' with ', ' and double portion of ']
 PREFERED = MENU[0]  # that's what promoted most
-FORBIDDEN = {'not', 'without', 'no'}
+FORBIDDEN = {'not', 'without', 'no', 'none'}
 
 SONG = ', '.join([PREFERED.capitalize()] + [PREFERED] * DEF_CHOICE) + '!'
 
@@ -17,7 +17,7 @@ D_WELCOME = ('Welcome to the Vikings restaurant.\n'
 D_CHOICE = '> '
 D_PROMOTE = "We highly recommend {dishes}" + f', and {PREFERED}...'
 D_GOOD = "That's a perfect choice. Let's have more {dishes}" + f', and {PREFERED}!'
-D_BAD = "Disgusting. Who eats {dishes}?"
+D_BAD = "Disgusting. Who eats {dishes}? We advice you to leave our restaurant."
 D_UNAVAILABLE = "That's not on our menu.\nWe have {dishes}."
 
 
@@ -90,5 +90,6 @@ if __name__ == '__main__':
     import sys
 
     main(sys.argv)
+
 
 
