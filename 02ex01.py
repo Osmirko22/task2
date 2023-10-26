@@ -41,34 +41,27 @@ USAGE = """USAGE: {script} initial_sum percent fixed_period set_period
 """
 USAGE = USAGE.strip()
 
-
 def deposit(initial_sum, percent, fixed_period, set_period):
     """Calculate deposit yield."""
     per = percent / 100
     growth = (1 + per) ** (set_period / fixed_period)
     return initial_sum * growth
 
-
-def main(args):
+def main():
     """Gets called when run as a script."""
-    if len(args) != 4 + 1:
-        exit(USAGE.format(script=args[0]))
-
-    args = args[1:]
-    initial_sum, percent, fixed_period, set_period = map(float, args)
-
-    # same as
-    # initial_sum = float(args[0])
-    # percent = float(args[1])
-    # ...
+    initial_sum = float(input("initial_sum: "))
+    percent = float(input("percent: "))
+    fixed_period = float(input("fixed_period: "))
+    set_period = float(input("set_period: "))
 
     res = deposit(initial_sum, percent, fixed_period, set_period)
-    print(res)
+    print(f"Yield: {res}")
 
+    # Calculate yields for common periods
+    common_periods = [1, 12, 60, 120]  # 1 month, 1 year, 5 years, 10 years
+    for period in common_periods:
+        yield_value = deposit(initial_sum, percent, fixed_period, period)
+        print(f"Yield for {period} periods: {yield_value}")
 
 if __name__ == '__main__':
-    import sys
-
-    main(sys.argv)
-
-
+    main()
